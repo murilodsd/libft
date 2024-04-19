@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:39:07 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/19 19:06:50 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:19:42 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ The memmove() function returns a pointer to dest.
 Para evitar sobreescrevermos a area de memoria que ainda vamos utilizar
 fazemos uma condicional para ou comecar copiando do comecou ou do final*/
 
-#include <libft.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -39,8 +39,41 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		while (n--)
 		{
-			d[n + 1] = s[n + 1];
+			d[n] = s[n];
 		}
 	}
 	return (dest);
+}
+#include <stdio.h>
+/* int	main(int argc, char **argv)
+{
+	(void)argc;
+	char *s = argv[1];
+	size_t n = (size_t)atoi(argv[2]);
+	ft_memmove(s+1,s,n);
+	printf("%s",s);
+} */
+#include <string.h>
+int main(int argc, char **argv)
+{
+	(void) argc;
+	
+	char *s1 = strdup(argv[1]);
+	char *s2 = strdup(argv[1]);
+	int n = atoi(argv[2]);
+
+	printf("\n\t>>> USING ft_memmove() <<<\n\n");
+	printf("Sending s1 = \'%s\'\n", s1);
+	ft_memmove(s1+1, s1, n);
+	printf("Returning \'%s\'\n", s1);
+
+	printf("\n\t>>> USING memmove() <<<\n\n");
+	printf("Sending s2 = \'%s\'\n", s2);
+	memmove(s2+1, s2, n);
+	printf("Returning \'%s\'\n", s2);
+
+	if(s1)
+		free(s1);
+	if(s2)
+		free(s2);
 }
