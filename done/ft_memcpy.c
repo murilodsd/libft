@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:19:06 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/19 15:36:19 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:41:01 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
        memory areas do overlap.
        The ft_memcpy() function returns a pointer to dest.
 */
+
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/19 15:45:48 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:04:41 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,10 @@ area dest.  The memory areas must not overlap.  Use memmove(3)  if  the
 memory areas do overlap.
 The ft_memcpy() function returns a pointer to dest.*/
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+/* The  memmove()  function  copies n bytes from memory area src to memory
+area dest.  The memory areas may overlap: copying takes place as though
+the  bytes in src are first copied into a temporary array that does not
+overlap src or dest, and the bytes are then copied from  the  temporary
+array to dest.*/
+void	*ft_memmove(void *dest, const void *src, size_t n);
 #endif
