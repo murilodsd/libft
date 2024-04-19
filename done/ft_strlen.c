@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-souz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:28:59 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/08/29 20:26:49 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/18 13:10:10 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* The strlen() function calculates the length of the string pointed to by
+       s, excluding the terminating null byte ('\0').
+       The strlen() function returns the number of bytes in the string pointed
+       to by s.
+*/
+
 #include <unistd.h>
 
-int	ft_strlen(char *str);
-
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	length;
+	int	i;
 
-	length = 0;
-	while (*str)
+	i = 0;
+	while (s[i])
 	{
-		str++;
-		length++;
+		i++;
 	}
-	return (length);
+	return (i);
 }
-/*#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
-	char b[10] = "Palavra!!!";
+	char b[10] = "a a";
 	char *str;
 	str = &b[0];
-	printf("Tamanho da string Palavra!!! eh: %d ", ft_strlen(str));
-}*/
+	printf("Tamanho da string Palavra!!! eh: %ld ", ft_strlen(str));
+} */

@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 18:41:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/04 12:11:33 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:00:36 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putstr(char *str);
-
-void	ft_putstr(char *str)
+/**
+ * Outputs the string 's' to the given file descriptor.
+ *
+ * @param s The string to be outputted.
+ * @param fd The file descriptor to write the string to.
+ */
+void	ft_putstr_fd(char *s, int fd)
 {
-	while (*str)
+	while (*s)
 	{
-		write(1, str, 1);
-		str++;
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
 }
 /* #include <stdio.h>
-int	main(void)
+#include <stdlib.h>
+int	main(int argc, char **argv)
 {
-	char b[] = "Print isso daqui";
-	ft_putstr(&b[0]);
+	argc = argc;
+	ft_putstr_fd(argv[1],atoi(argv[2]));
 } */

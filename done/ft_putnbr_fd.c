@@ -1,74 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:29:48 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/04 12:31:13 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:02:38 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+/** Outputs the integer ’n’ to the given file descriptor.
+* @param n: The integer to be outputted.
+* @param fd: The file descriptor to write the output to.
+*/
+#include "libft.h"
 
-void	ft_putchar(char c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(1, &c, 1);
-}
+	unsigned int	nb;
 
-int	potencia10(int n)
-{
-	int	pot;
-
-	if (n == 0)
-		return (1);
-	pot = 10;
-	while (n > 1)
+	if (n < 0)
 	{
-		pot = pot * 10;
-		n--;
+		ft_putchar_fd('-', fd);
+		nb = -n;
 	}
-	return (pot);
-}
-
-void	ft_putnbr(int nb)
-{
-	int	casas;
-	int	copy_nb;
-	int	digito;
-
-	casas = 1;
-	copy_nb = nb;
-	while (copy_nb >= 10 || copy_nb <= -10)
+	else
+		nb = n;
+	if (nb < 10)
 	{
-		copy_nb = copy_nb / 10;
-		casas++;
+		ft_putchar_fd(nb + '0', fd);
+		return ;
 	}
-	if (nb < 0)
-		ft_putchar('-');
-	while (casas > 0)
-	{
-		digito = (nb / potencia10(casas - 1)) % 10;
-		if (digito < 0)
-			digito = digito * (-1);
-		ft_putchar(digito + '0');
-		casas--;
-	}
+	ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd(nb % 10 + '0', fd);
+	return ;
 }
 /* #include <stdio.h>
 int	main(void)
 	{
 		printf("TESTE PARA 1\n");
-		ft_putnbr(1);
+		ft_putnbr_fd(1,1);
 		printf("\nTESTE PARA 123\n");
-		ft_putnbr(123);
+		ft_putnbr_fd(123,1);
 		printf("\nTESTE PARA -15465\n");
-		ft_putnbr(-15465);
+		ft_putnbr_fd(-15465,1);
 		printf("\nTESTE PARA -2147483648\n");
-		ft_putnbr(-2147483648);
+		ft_putnbr_fd(-2147483648,1);
 		printf("\nTESTE PARA 2147483647\n");
-		ft_putnbr(2147483647);
+		ft_putnbr_fd(2147483647,1);
 		printf("\nTESTE PARA 0\n");
-		ft_putnbr(0);
+		ft_putnbr_fd(0,1);
 	} */

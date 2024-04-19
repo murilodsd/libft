@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-souz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:55:59 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/06 19:28:05 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:48:15 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Retorna 1 se for so numeros
-//Retorna 0 se tiver algum outro caractere
-
-int	ft_str_is_numeric(char *str);
-
-int	ft_str_is_numeric(char *str)
+/** This function checks if the given character is a digit (0-9).
+ * @param c The character to be checked.
+ * @return 1 if the character is a digit, 0 otherwise.
+ */
+int	ft_isdigit(int c)
 {
-	while (*str)
-	{
-		if (!(*str >= '0' && *str <= '9'))
-			return (0);
-		str++;
-	}
-	return (1);
+	if ((c >= '0' && c <= '9'))
+		return (1);
+	return (0);
 }
 /*#include <stdio.h>
 

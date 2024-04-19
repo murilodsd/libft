@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-souz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 13:10:56 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/08/24 13:55:34 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/18 15:18:28 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/19 14:20:12 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c);
-
-void	ft_putchar(char c)
+int	ft_isascii(int c)
 {
-	write(1, &c, 1);
+	return (c >= 0 && c <= 127);
 }
