@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 05:41:36 by murilodsd         #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:03 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/22 16:11:28 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/22 16:33:45 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strdup(const char *s)
 {
-	int	i;
+	int		i;
+	char	*p;
 
-	i = (int)ft_strlen(s);
-	while (i >= 0)
+	p = (char *)malloc(sizeof(s) + 1);
+	i = 0;
+	while (s[i])
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
-		i--;
+		p[i] = s[i];
+		i++;
 	}
-	return (0);
+	p[i] = '\0';
+	return (p);
 }
 /* #include <stdio.h>
-int 	main(void)
-{
-	char *s = "batata";
-	printf("%p\n",s);
-	printf("%p\n",ft_strrchr(s,'b'));
+int	main(void)
+{	
+	char s1[] = "teste";
+	printf("%s",ft_strdup(s1));
 } */

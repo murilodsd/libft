@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 05:41:36 by murilodsd         #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:03 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/22 12:58:15 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/22 15:02:49 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* The  memcmp()  function compares the first n bytes (each interpreted as
+       unsigned char) of the memory areas s1 and s2.
+ */
+
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-
-	i = (int)ft_strlen(s);
-	while (i >= 0)
+	if (!n)
+		return (0);
+	while (--n)
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
-		i--;
+		if (*(unsigned char *)s1 != *(unsigned char *)s2)
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		s1++;
+		s2++;
 	}
-	return (0);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 /* #include <stdio.h>
-int 	main(void)
+int	main(void)
 {
-	char *s = "batata";
-	printf("%p\n",s);
-	printf("%p\n",ft_strrchr(s,'b'));
+	printf("%d\n",ft_memcmp("","paoasd",0));
 } */
