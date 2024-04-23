@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 19:57:08 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/23 21:58:43 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strtrim(char const *s1, char const *set);
 #endif
