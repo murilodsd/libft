@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/23 22:04:56 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:16:34 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ int	ft_count_str(char const *s, char c)
 	count = 0;
 	while (*s)
 	{
-		if(*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
+		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
 			count++;
 		s++;
 	}
 	return (count);
 }
 
-size_t	ft_lendelimiter(char const *s, char c)
+size_t	ft_strlen_c(char const *s, char c)
 {
 	size_t	len;
 
@@ -43,47 +43,54 @@ size_t	ft_lendelimiter(char const *s, char c)
 	return (len);
 }
 
-/* void	ft_fillarray(char *p, char const *s, char c)
+char	**ft_fillarray_c(char	**p, char const *s, char c)
 {
-	
-} */
+	int	i;
+	int	j;
 
-char	**ft_split(char const *s, char c)
-{
-	char	**p;
-	int		i;
-	int		j;
-
-	p = (char **)malloc(sizeof(char *) * (ft_count_str(s,c) + 1));
-	if (!p)
-		return (NULL);
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			p[i] = (char *)malloc(sizeof(char) * (ft_lendelimiter(s,c)) + 1);
-			if(!p[i])
+			p[i] = (char *)malloc(sizeof(char) * (ft_strlen_c(s, c)) + 1);
+			if (!p[i])
 				return (NULL);
 			j = 0;
 			while (*s && *s != c)
 				p[i][j++] = *s++;
 			p[i][j] = '\0';
 			i++;
-;		}
+		}
 		else
-			s++;	
+			s++;
 	}
 	p[i] = '\0';
 	return (p);
 }
-#include <stdio.h>
+
+char	**ft_split(char const *s, char c)
+{
+	char	**p;
+
+	p = (char **)malloc(sizeof(char *) * (ft_count_str(s, c) + 1));
+	if (!p)
+		return (NULL);
+	return (ft_fillarray_c(p, s, c));
+}
+/* #include <stdio.h>
 int	main(void)
 {	
 	int	words = 4;
 	char 	**p;
+	int	i;
 	
-	p = ft_split("string1_string2_string3_string4",'_');
-	while (words--)
-	printf("%s",*p++);
-}
+	p = ft_split("__string1_string2_string3___string4_",'_');
+	i = 0;
+	while (i < words)
+	{
+		printf("%s",*(p + i));
+		free(*(p + i++));
+	}
+	free((p));
+} */

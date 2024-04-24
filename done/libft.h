@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/23 21:58:43 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:29:29 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 /*Outputs the character ’c’ to the given file descriptor.*/
 void	ft_putchar_fd(char c, int fd);
@@ -27,9 +33,9 @@ as first argument. Each character is passed by
 address to ’f’ to be modified if necessary. */
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 /* The strlen() function calculates the length of the string pointed to by
-       s, excluding the terminating null byte ('\0').
-       The strlen() function returns the number of bytes in the string pointed
-       to by s.*/
+	s, excluding the terminating null byte ('\0').
+	The strlen() function returns the number of bytes in the string pointed
+	to by s.*/
 size_t	ft_strlen(const char *s);
 /*Outputs the string 's' to the given file descriptor followed by a newline.*/
 void	ft_putendl_fd(char *s, int fd);
@@ -84,4 +90,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 #endif
