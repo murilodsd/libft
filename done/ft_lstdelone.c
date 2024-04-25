@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 08:58:35 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 18:16:34 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/25 19:22:57 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/25 21:20:29 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Adds the node ’new’ at the beginning of the list.*/
+/** 
+ * Takes as a parameter a node and frees the memory of
+the node’s content using the function ’del’ given
+as a parameter and free the node. The memory of
+’next’ must not be freed.
+ * @param lst: The node to free.
+ * @param del: The address of the function used to delete the content.
+ */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!new || !lst)
+	if (!lst || !del)
 		return ;
-	if (*lst)
-		new->next = *lst;
-	*lst = new;
+	del(lst->content);
+	free(lst);
 }
 /* #include <stdio.h>
 void ft_printlst(t_list *head)
@@ -39,7 +45,6 @@ void ft_printlst(t_list *head)
 	printf("\n");
 	}
 }
-
 int	*ft_seq_int_arr(int rand_num)
 {
 	int	*p_num;
@@ -51,15 +56,29 @@ int	*ft_seq_int_arr(int rand_num)
 		p_num[rand_num] = rand_num;
 	return (p_num);
 }
+void	delete(void* content)
+{
+	return ;
+	free(content);
+}
 int	main(void)
 {
-	int	num = 4;
+	printf("\n");
+	int	num = 2;
 	int	*p_num = ft_seq_int_arr(num);//gera um array sequencial 0,1,2...
 	t_list	*head;
 	
 	head = NULL;
- 	while (num--)//lista array sequencial comecando pro primeiro, o zero.
-		ft_lstadd_front(&head,ft_lstnew(p_num++));
+ 	while (num--)//lista array sequencial comecando pelo primeiro, o zero.
+		ft_lstadd_back(&head,ft_lstnew(p_num++));
+	printf("Do primeiro ao ultimo ->");
 	ft_printlst(head);
+	printf("#------------------------------#\n");
+	printf("Deletando o ultimo da lista: %d\n", *(int *)ft_lstlast(head)->content);
+	ft_lstdelone(ft_lstlast(head),delete);
+	ft_lstdelone(head,delete);
+	printf("Size of p_num: %zu\n", sizeof(p_num));
+	printf("Size of s_list: %zu\n", sizeof(t_list));
+	free(p_num-2);
 	return (0);
 } */

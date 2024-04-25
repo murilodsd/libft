@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 08:58:35 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 18:16:34 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/25 18:17:49 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/25 18:38:55 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Adds the node ’new’ at the beginning of the list.*/
+/**
+ * Returns the last node of the list.
+ * @param lst: The beginning of the list.
+ * @return Last node of the list
+ */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list *ft_lstlast(t_list *lst)
 {
-	if (!new || !lst)
-		return ;
-	if (*lst)
-		new->next = *lst;
-	*lst = new;
+	if(!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 /* #include <stdio.h>
-void ft_printlst(t_list *head)
-{
-	t_list *temp = head;
-	
-	if (!head)
-		printf("Lista inexistente\n");
-	else
-	{
-	while (temp != NULL)
-	{
-		printf("%d ", *(int *)temp->content);
-		temp = temp->next;
-	}
-	printf("\n");
-	}
-}
 
 int	*ft_seq_int_arr(int rand_num)
 {
@@ -53,13 +41,13 @@ int	*ft_seq_int_arr(int rand_num)
 }
 int	main(void)
 {
-	int	num = 4;
-	int	*p_num = ft_seq_int_arr(num);//gera um array sequencial 0,1,2...
+	int	num = 3;
+	int	*p_num = ft_seq_int_arr(num);
 	t_list	*head;
 	
 	head = NULL;
- 	while (num--)//lista array sequencial comecando pro primeiro, o zero.
+ 	while (num--)
 		ft_lstadd_front(&head,ft_lstnew(p_num++));
-	ft_printlst(head);
+	printf("%d\n",*(int *)ft_lstlast(head)->content);
 	return (0);
 } */

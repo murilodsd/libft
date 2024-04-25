@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 08:58:35 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 18:16:34 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/25 18:41:56 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/25 19:37:35 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Adds the node ’new’ at the beginning of the list.*/
+/**
+ * Adds the node ’new’ at the end of the list.
+ * @param lst: The address of a pointer to the first link of a list.
+ * @param new: The address of a pointer to the node to be added to the list.
+ */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!new || !lst)
+	
+	if (!lst || !new)
 		return ;
-	if (*lst)
-		new->next = *lst;
-	*lst = new;
+	if (!(*lst))
+		*lst = new;
+	else
+	{
+		ft_lstlast(*lst)->next = new;	
+	} 	
 }
 /* #include <stdio.h>
 void ft_printlst(t_list *head)
@@ -56,10 +64,15 @@ int	main(void)
 	int	num = 4;
 	int	*p_num = ft_seq_int_arr(num);//gera um array sequencial 0,1,2...
 	t_list	*head;
+	int	last_int = 99;
 	
 	head = NULL;
- 	while (num--)//lista array sequencial comecando pro primeiro, o zero.
-		ft_lstadd_front(&head,ft_lstnew(p_num++));
+ 	while (num--)//lista array sequencial comecando pelo primeiro, o zero.
+		ft_lstadd_back(&head,ft_lstnew(p_num++));
 	ft_printlst(head);
+	printf("Adicionando mais um numero a lista: %d\n", last_int);
+	ft_lstadd_back(&head,ft_lstnew(&last_int));
+	printf("Chmando funcao ft_lstlast\n");
+	printf("O ultimo elemento é %d\n",*(int *)ft_lstlast(head)->content);
 	return (0);
 } */

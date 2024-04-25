@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 20:16:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/18 14:59:44 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:17:11 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,17 @@ true—letters which are neither uppercase nor lowercase. */
 
 int	ft_isupper(int c)
 {
-	if ((c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	return (c >= 'A' && c <= 'Z');
 }
 
 int	ft_islower(int c)
 {
-	if ((c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	return (c >= 'a' && c <= 'z');
 }
 
 int	ft_isalpha(int c)
 {
-	if ((ft_isupper(c) || ft_islower(c)))
-		return (1);
-	return (0);
+	return (ft_isupper(c) || ft_islower(c));
 }
 /* #include <stdio.h>
 int main(int argc, char **argv) {

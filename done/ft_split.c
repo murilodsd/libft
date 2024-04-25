@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/24 19:52:00 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:51:17 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	**ft_fillarray_c(char	**p, char const *s, char c)
 			p[i] = (char *)malloc(sizeof(char) * (ft_strlen_c(s, c)) + 1);
 			if (!p[i])
 			{
-				ft_free_all_allocated_mem(p, i - 1);
+				ft_free_allocated_mem(p, i - 1);
 				return (NULL);
 			}
 			j = 0;
@@ -92,18 +92,18 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_fillarray_c(p, s, c));
 }
-// #include <stdio.h>
-// int	main(void)
-// {	
-// 	int	words = 4;
-// 	char 	**p;
-// 	int	i;
-// 	p = ft_split("__string1_string2_string3___string4_",'_');
-// 	i = 0;
-// 	while (i < words)
-// 	{
-// 		printf("%s",*(p + i));
-// 		free(*(p + i++));
-// 	}
-// 	free((p));
-// }
+/* #include <stdio.h>
+int	main(void)
+{	
+	int	words = 4;
+	char 	**p;
+	int	i;
+	p = ft_split("__string1_string2_string3___string4_",'_');
+	i = 0;
+	while (i < words)
+	{
+		printf("%s",*(p + i));
+		free(*(p + i++));
+	}
+	free((p));
+} */
