@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 19:22:57 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/26 18:26:37 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/26 18:29:59 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/26 18:55:17 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/** 
- * Takes as a parameter a node and frees the memory of
-the node’s content using the function ’del’ given
-as a parameter and free the node. The memory of
-’next’ must not be freed.
- * @param lst: The node to free.
- * @param del: The address of the function used to delete the content.
- */
+/**
+ * Iterates the list ’lst’ and applies the function
+ * ’f’ on the content of each node.
+ * @param lst: The address of a pointer to a node.
+ * @param f: The address of the function used to iterate on
+ * @return none
+the list.
+*/
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !del)
+	if (!lst || !f)
 		return ;
-	del(lst->content);
-	free(lst);
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
 /* #include <stdio.h>
 void ft_printlst(t_list *head)
@@ -37,12 +40,12 @@ void ft_printlst(t_list *head)
 		printf("Lista inexistente\n");
 	else
 	{
-	while (temp != NULL)
-	{
-		printf("%d ", *(int *)temp->content);
-		temp = temp->next;
-	}
-	//printf("\n");
+		while (temp != NULL)
+		{
+			printf("%d ", *(int *)temp->content);
+			temp = temp->next;
+		}
+		printf("\n");
 	}
 }
 static int	*ft_int_p(int rand_num)
@@ -55,14 +58,17 @@ static int	*ft_int_p(int rand_num)
 	*p_num = rand_num;
 	return (p_num);
 }
-void	delete(void* content)
+void	content2(void* content)
 {
-	free(content);
+	int	*int_content;
+
+	int_content = content;
+	*int_content *= 2;
 }
 int	main(void)
 {
 	printf("\n");
-	int	num = 2;
+	int	num = 3;
 	t_list	*head;
 
 	head = NULL;
@@ -71,9 +77,9 @@ int	main(void)
 	printf("Do primeiro ao ultimo ->");
 	ft_printlst(head);
 	printf("#------------------------------#\n");
-	printf("Deletando: %d\n", *(int *)ft_lstlast(head)->content);
-	ft_lstdelone(ft_lstlast(head),delete);
-	ft_lstdelone(head,delete);
+	printf("Multiplicando por dois todos\n");
+	ft_lstiter(head,content2);
+	ft_printlst(head);
 	printf("Size of s_list: %zu\n", sizeof(t_list));
 	return (0);
 } */

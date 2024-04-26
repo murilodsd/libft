@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft_lstnew.c                                     :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 17:32:52 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 08:57:12 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/26 20:21:05 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ the value of the parameter ’content’. The variable
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*node;
+	t_list *node;
 
 	node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
@@ -29,8 +29,7 @@ t_list	*ft_lstnew(void *content)
 	return (node);
 }
 /* #include <stdio.h>
-int main(void)
-{
+int main(void) {
 	// Teste 1: Valor 42
 	int *num = (int *)malloc(sizeof(int));
 	*num = 42;

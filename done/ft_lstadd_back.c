@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:41:56 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 19:37:35 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:25:21 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	
 	if (!lst || !new)
 		return ;
 	if (!(*lst))
 		*lst = new;
 	else
 	{
-		ft_lstlast(*lst)->next = new;	
-	} 	
+		ft_lstlast(*lst)->next = new;
+	}
 }
 /* #include <stdio.h>
 void ft_printlst(t_list *head)
