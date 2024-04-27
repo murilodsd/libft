@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/25 20:51:17 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:58:33 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ NULL if the allocation fails.*/
 
 #include "libft.h"
 
-int	ft_count_str(char const *s, char c)
+static int	ft_count_str(char const *s, char c)
 {
 	int	count;
 
@@ -33,7 +33,7 @@ int	ft_count_str(char const *s, char c)
 	return (count);
 }
 
-size_t	ft_strlen_c(char const *s, char c)
+static size_t	ft_strlen_c(char const *s, char c)
 {
 	size_t	len;
 
@@ -43,7 +43,7 @@ size_t	ft_strlen_c(char const *s, char c)
 	return (len);
 }
 
-void	ft_free_allocated_mem(char **p, int i)
+static void	ft_free_allocated_mem(char **p, int i)
 {
 	while (i >= 0)
 	{
@@ -54,7 +54,7 @@ void	ft_free_allocated_mem(char **p, int i)
 	p = NULL;
 }
 
-char	**ft_fillarray_c(char	**p, char const *s, char c)
+static char	**ft_fillarray_c(char	**p, char const *s, char c)
 {
 	int	i;
 	int	j;

@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:52:03 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/24 16:22:36 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:47:16 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Negative numbers must be handled.*/
 
 #include "libft.h"
 
-int	ft_countdec(int n)
+static int	ft_countdec(int n)
 {
 	int	count;
 

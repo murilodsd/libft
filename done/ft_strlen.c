@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:28:59 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/18 13:10:10 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:59:59 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
        to by s.
 */
 
-#include <unistd.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

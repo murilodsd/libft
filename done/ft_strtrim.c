@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:48:55 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/23 19:51:04 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:00:53 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,25 @@ from the beginning and the end of the string. */
 
 #include "libft.h"
 
-size_t	ft_strtrimlen(char const *s1, char const *set);
+static size_t	ft_strtrimlen(char const *s1, char const *set)
+{
+	size_t	len;
+	int		i;
+	int		j;
+
+	len = 0;
+	i = 0;
+	while (s1[i])
+	{
+		j = 0;
+		while (set[j] != s1[i] && set[j])
+			j++;
+		if (set[j] == '\0')
+			len++;
+		i++;
+	}
+	return (len);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -40,26 +58,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	s2[i] = '\0';
 	return (s2);
-}
-
-size_t	ft_strtrimlen(char const *s1, char const *set)
-{
-	size_t	len;
-	int		i;
-	int		j;
-
-	len = 0;
-	i = 0;
-	while (s1[i])
-	{
-		j = 0;
-		while (set[j] != s1[i] && set[j])
-			j++;
-		if (set[j] == '\0')
-			len++;
-		i++;
-	}
-	return (len);
 }
 /* #include <stdio.h>
 int	main(void)
