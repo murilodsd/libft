@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:52:03 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/27 19:47:16 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:13:21 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ Negative numbers must be handled.*/
 
 #include "libft.h"
 
-static int	ft_countdec(int n)
+static int	ft_countdec(long n_long)
 {
 	int	count;
 
 	count = 1;
-	while (n > 9)
+	while (n_long > 9)
 	{
-		n /= 10;
+		n_long /= 10;
 		count++;
 	}
 	return (count);
 }
 
-static void	ft_fillarray(char *p, int n, size_t size)
+static void	ft_fillarray(char *p, long n_long, size_t size)
 {
 	p[size] = '\0';
 	while (size && p[size - 1] != '-')
 	{
-		p[--size] = (n % 10) + '0';
-		n /= 10;
+		p[--size] = (n_long % 10) + '0';
+		n_long /= 10;
 	}
 }
 
@@ -44,14 +44,16 @@ char	*ft_itoa(int n)
 	size_t	size;
 	size_t	decplaces;
 	char	*p;
+	long	n_long;
 
+	n_long = n;
 	size = 0;
-	if (n < 0)
+	if (n_long < 0)
 	{
 		size++;
-		n *= (-1);
+		n_long *= (-1);
 	}
-	decplaces = ft_countdec(n);
+	decplaces = ft_countdec(n_long);
 	size = size + decplaces;
 	p = (char *)malloc(sizeof(char) * (size + 1));
 	if (!p)
@@ -60,7 +62,7 @@ char	*ft_itoa(int n)
 	{
 		p[0] = '-';
 	}
-	ft_fillarray(p, n, size);
+	ft_fillarray(p, n_long, size);
 	return (p);
 }
 /* #include <stdio.h>

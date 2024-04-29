@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/27 19:58:33 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:23:36 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static char	**ft_fillarray_c(char	**p, char const *s, char c)
 		else
 			s++;
 	}
-	p[i] = '\0';
+	p[i] = 0;
 	return (p);
 }
 

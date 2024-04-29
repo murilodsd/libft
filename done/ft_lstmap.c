@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 19:55:31 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/26 21:45:05 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:20:22 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		return (NULL);
 	head = NULL;
 	while (lst)
-	{	
+	{
 		new = ft_lstnew(f(lst->content));
 		if (!new)
 		{
-			ft_lstclear(&head,del);
+			ft_lstclear(&head, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&head,new);
+		ft_lstadd_back(&head, new);
 		lst = lst->next;
 	}
 	return (head);

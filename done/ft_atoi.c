@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:26:58 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 20:03:38 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:37:13 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ to by nptr to int. */
 
 int	ft_atoi(const char *nptr)
 {
-	int	n;
-	int	signal;
+	long	n;
+	long	signal;
 
 	signal = 1;
 	while (*nptr == ' ')
