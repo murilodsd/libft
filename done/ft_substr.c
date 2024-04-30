@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:14:27 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/30 08:41:24 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:37:01 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		i;
 
 	s_length = ft_strlen(s);
-	if (start >= s_length)
-		substr_s = 0;
+	if (*s == '\0' || start >= s_length)
+		return (ft_strdup(""));
 	else if (len <= s_length - (size_t)start)
 		substr_s = len;
 	else
@@ -56,5 +56,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 #include <string.h>
 int	main(void)
 {
-	printf("%d",strncmp(ft_substr("01234",10,10),"",1));
-}  */
+	printf("%s",ft_substr("ab\0",1,1));
+} */

@@ -1,40 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 16:32:59 by murilodsd         #+#    #+#             */
-/*   Updated: 2024/04/30 17:55:39 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/30 18:00:20 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/30 18:17:27 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_toupper(int c)
 {
-	unsigned int	i;
-
-	if (size > 0)
-	{
-		size--;
-		i = 0;
-		while (size-- && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (ft_strlen(src));
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return(c);
 }
-/* #include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	char	dest[10];
-	strlcpy(dest,"teste",5);
-	printf("%s",dest);
-}
- */

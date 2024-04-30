@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:54:23 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/30 07:49:19 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:50:38 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*concat;
 	int		i;
+	size_t	total_length;
 
-	concat = ((char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1)));
+	total_length = ft_strlen(s1) + ft_strlen(s2);
+	concat = ((char *)malloc(sizeof(char) * (total_length + 1)));
 	if (concat == NULL)
 		return (NULL);
 	i = 0;

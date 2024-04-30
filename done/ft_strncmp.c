@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:46:35 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/30 07:42:55 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:59:06 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(void)
 	char s1[] = "\0";
 	char s2[] = "\200";
 	size_t	n = 1;
-	printf("%s e %s, resultado: %d \n",s1,s2,ft_strncmp("zyxbcdefgh", "abcdwxyz", 0));
-	printf("%s e %s, resultado: %d \n",s1,s2,strncmp("zyxbcdefgh", "abcdwxyz", 0));
+	printf("%d \n",s1,s2,ft_strncmp("zyxbcdefgh", "abcdwxyz", 0));
+	printf("%d \n",s1,s2,strncmp("zyxbcdefgh", "abcdwxyz", 0));
 	printf("%s e %s, resultado: %d \n",s1,s2,ft_strncmp(s1,s2,n));
 } */
