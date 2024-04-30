@@ -13,10 +13,10 @@ ft_isascii.c ft_putchar_fd.c ft_strlcat.c \
 ft_isdigit.c ft_putendl_fd.c ft_strlcpy.c \
 ft_isprint.c ft_putnbr_fd.c ft_strlen.c
 OBJS=$(SRCS:.c=.o)
-BONUS_SRCS= ft_lstadd_front.c ft_lstadd_back ft_lstclear.c \
+BONUS_SRCS= ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c \
 ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
 ft_lstnew.c ft_lstsize.c
-BONUS_OBJS=$(SRCS:.c=.o)
+BONUS_OBJS=$(BONUS_SRCS:.c=.o)
 INCLUDE=./
 RM=rm -f
 

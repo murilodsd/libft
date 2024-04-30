@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/29 18:55:36 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 09:29:22 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ it is equivalent to (isupper(c) ||  islower(c)).   In  some  lo‐
 cales, there may be additional characters for which isalpha() is
 true—letters which are neither uppercase nor lowercase. */
 int		ft_isalpha(int c);
+int		ft_isascii(int c);
 /* The  memset()  function  fills  the  first  n  bytes of the memory area
 * pointed to by s with the constant byte c. 
 * The memset() function returns a pointer to the memory area s.*/
@@ -80,6 +81,8 @@ the  bytes in src are first copied into a temporary array that does not
 overlap src or dest, and the bytes are then copied from  the  temporary
 array to dest.*/
 void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
@@ -90,6 +93,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strdup(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

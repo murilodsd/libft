@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 13:30:12 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 16:34:14 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:36:46 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
+	if (*little == '\0')
+		return ((char *)big);
 	i = 0;
 	while (big[i] && i < len)
 	{

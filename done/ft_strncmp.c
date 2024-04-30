@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:46:35 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 16:31:20 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 07:42:55 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,24 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
+	if (n == 0)
+		return (0);
 	while (*s1 && --n && *s1 == *s2)
 	{
 		s1++;
 		s2++;
 	}
-	return (*s1 - *s2);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 /* #include <stdio.h>
+#include <string.h>
 
 int	main(void)
 {	
-	char s1[] = "aaa";
-	char s2[] = "aaa";
-	size_t	n = 3;
-	printf("%s e %s, resultado: %d ",s1,s2,ft_strncmp(s1,s2,n));
+	char s1[] = "\0";
+	char s2[] = "\200";
+	size_t	n = 1;
+	printf("%s e %s, resultado: %d \n",s1,s2,ft_strncmp("zyxbcdefgh", "abcdwxyz", 0));
+	printf("%s e %s, resultado: %d \n",s1,s2,strncmp("zyxbcdefgh", "abcdwxyz", 0));
+	printf("%s e %s, resultado: %d \n",s1,s2,ft_strncmp(s1,s2,n));
 } */

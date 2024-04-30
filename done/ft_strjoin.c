@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 20:54:23 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/18 15:04:38 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 07:49:19 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*concat;
 	int		i;
 
-	concat = ((char *)malloc(sizeof(s1) + sizeof(s2) + 1));
+	concat = ((char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1)));
 	if (concat == NULL)
 		return (NULL);
 	i = 0;
@@ -44,5 +44,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	printf("%s\n", ft_strjoin("", ""));
-}  */
+	char	s1[] = "lorem ipsum";
+	char	s2[] = "dolor sit amet";
+	printf("%s\n", ft_strjoin(s1, s2));
+} */

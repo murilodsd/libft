@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 05:41:36 by murilodsd         #+#    #+#             */
-/*   Updated: 2024/04/22 16:29:03 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 08:52:29 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	i = (int)ft_strlen(s);
 	while (i >= 0)
 	{
-		if (s[i] == c)
+		if ((unsigned char)s[i] == (unsigned char)c)
 			return ((char *)(s + i));
 		i--;
 	}
-	return (0);
+	return (NULL);
 }
 /* #include <stdio.h>
 int 	main(void)

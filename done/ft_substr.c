@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:14:27 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/23 18:48:23 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 08:41:24 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,18 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	size_t	s_substr;
+	size_t	substr_s;
+	size_t	s_length;
 	int		i;
 
-	if (len <= ft_strlen(s) - (size_t)start)
-		s_substr = len;
+	s_length = ft_strlen(s);
+	if (start >= s_length)
+		substr_s = 0;
+	else if (len <= s_length - (size_t)start)
+		substr_s = len;
 	else
-		s_substr = ft_strlen(s) - (size_t)start;
-	substr = (char *)malloc(sizeof(char) * s_substr + 1);
+		substr_s = s_length - (size_t)start;
+	substr = (char *)malloc(sizeof(char) * (substr_s + 1));
 	if (!substr)
 		return (NULL);
 	i = 0;
@@ -49,7 +53,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 /* #include <stdio.h>
+#include <string.h>
 int	main(void)
 {
-	printf("%s",ft_substr("stringprincipal",0,15));
-} */
+	printf("%d",strncmp(ft_substr("01234",10,10),"",1));
+}  */

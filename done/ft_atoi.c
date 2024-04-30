@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:26:58 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/29 19:37:13 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:38:46 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@ to by nptr to int. */
 
 #include "libft.h"
 
+int	ft_isspace(char c)
+{
+	return ((c >= 9 && c <= 13) || c == ' ');
+}
+
 int	ft_atoi(const char *nptr)
 {
 	long	n;
 	long	signal;
 
 	signal = 1;
-	while (*nptr == ' ')
+	while (ft_isspace(*nptr))
 		nptr++;
 	if (*nptr == '+')
 		nptr++;

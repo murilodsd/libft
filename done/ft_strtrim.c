@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:48:55 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/27 20:00:53 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/04/30 08:07:23 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,14 @@ from the beginning and the end of the string. */
 
 #include "libft.h"
 
-static size_t	ft_strtrimlen(char const *s1, char const *set)
+static int	ft_ischarset(char c, char const *set)
 {
-	size_t	len;
-	int		i;
-	int		j;
-
-	len = 0;
-	i = 0;
-	while (s1[i])
+	while (*set)
 	{
-		j = 0;
-		while (set[j] != s1[i] && set[j])
-			j++;
-		if (set[j] == '\0')
-			len++;
-		i++;
+		if (c == *set++)
+			return (1);
 	}
-	return (len);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
@@ -43,20 +33,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		j;
 
 	i = 0;
-	s2 = (char *)malloc(sizeof(char) * ft_strtrimlen(s1, set) + 1);
-	if (!s2)
-		return (NULL);
-	i = 0;
-	while (*s1)
-	{
-		j = 0;
-		while (set[j] != *s1 && set[j])
-			j++;
-		if (set[j] == '\0')
-			s2[i++] = *s1;
-		s1++;
-	}
-	s2[i] = '\0';
+	while (s1[i] && ft_ischarset(s1[i],set))
+		i++;
+	j = ft_strlen(s1);
+	j--;
+	while (s1[j] && ft_ischarset(s1[j],set))
+		j--;
+	s2 = ft_substr(s1, i, j - i + 1);
 	return (s2);
 }
 /* #include <stdio.h>
