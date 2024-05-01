@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilodsd <murilodsd@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:39:07 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/21 20:13:08 by murilodsd        ###   ########.fr       */
+/*   Updated: 2024/05/01 14:28:57 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* The  memmove()  function  copies n bytes from memory area src to memory
-area dest.  The memory areas may overlap: copying takes place as though
-the  bytes in src are first copied into a temporary array that does not
-overlap src or dest, and the bytes are then copied from  the  temporary
-array to dest.
-The memmove() function returns a pointer to dest.
+/** The  memmove()  function  copies n bytes from memory area src to memory
+ * area dest.  The memory areas may overlap: copying takes place as though
+ * the  bytes in src are first copied into a temporary array that does not
+ * overlap src or dest, and the bytes are then copied from  the  temporary
+ * array to dest.
+ * @return pointer to dest.
 Para evitar sobreescrevermos a area de memoria que ainda vamos utilizar
 fazemos uma condicional para ou comecar copiando do comecou ou do final*/
 
@@ -23,8 +23,8 @@ fazemos uma condicional para ou comecar copiando do comecou ou do final*/
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	char		*d;
+	const char	*s;
 
 	d = dest;
 	s = src;

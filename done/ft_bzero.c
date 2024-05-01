@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:50:03 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 18:21:17 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:30:08 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ taining '\0') to that area.
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*p;
-
-	p = s;
-	while (n--)
-		*p++ = '\0';
+	ft_memset(s, '\0', n);
 }
 /* #include <stdio.h>
 int	main(void)

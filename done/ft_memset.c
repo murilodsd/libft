@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:43:18 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/18 17:58:33 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:32:08 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*p;
+	char	*p;
 
 	p = s;
 	while (n--)
 	{
-		*p++ = (unsigned char)c;
+		*p++ = (char)c;
 	}
 	return (s);
 }
