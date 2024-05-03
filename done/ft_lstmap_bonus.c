@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 19:55:31 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/29 18:20:22 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:49:03 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,31 @@
 
 #include "libft.h"
 
+static void	*ft_clear(t_list **lst, void *content, void (*del)(void *))
+{
+	if (content)
+		del(content);
+	ft_lstclear(lst, del);
+	return (NULL);
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*head;
 	t_list	*new;
+	void	*content;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	head = NULL;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
+		content = f(lst->content);
+		if (!content)
+			return (ft_clear(&head, content, del));
+		new = ft_lstnew(content);
 		if (!new)
-		{
-			ft_lstclear(&head, del);
-			return (NULL);
-		}
+			return (ft_clear(&head, content, del));
 		ft_lstadd_back(&head, new);
 		lst = lst->next;
 	}
@@ -91,7 +100,7 @@ int	main(void)
 	t_list	*new;
 
 	head = NULL;
- 	while (num--)//Isere na lista primeiro os maiores numeros...
+ 	while (num--)//Insere na lista primeiro os maiores numeros...
 		ft_lstadd_back(&head,ft_lstnew(ft_int_p(num)));
 	printf("Do primeiro ao ultimo ->");
 	ft_printlst(head);
@@ -99,8 +108,7 @@ int	main(void)
 	printf("Multiplicando por dois todos\n");
 	new = ft_lstmap(head,content2,delete);
 	ft_printlst(new);
-	printf("Size of s_list: %zu\n", sizeof(t_list));
 	ft_lstclear(&head,delete);
-	ft_lstclear(&new,delete);
+	printf("Size of s_list: %zu\n", sizeof(t_list));
 	return (0);
 } */

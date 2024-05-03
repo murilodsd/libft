@@ -13,9 +13,10 @@ ft_isascii.c ft_putchar_fd.c ft_strlcat.c \
 ft_isdigit.c ft_putendl_fd.c ft_strlcpy.c ft_tolower.c \
 ft_isprint.c ft_putnbr_fd.c ft_strlen.c ft_toupper.c
 OBJS=$(SRCS:.c=.o)
-BONUS_SRCS= ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c \
-ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
-ft_lstnew.c ft_lstsize.c
+BONUS_SRCS= ft_lstadd_front_bonus.c ft_lstadd_back_bonus.c \
+ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
+ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c \
+ft_lstsize_bonus.c
 BONUS_OBJS=$(BONUS_SRCS:.c=.o)
 INCLUDE=./
 RM=rm -f
@@ -33,18 +34,9 @@ bonus: $(OBJS) $(BONUS_OBJS)
 	$(CC) $(CCFLAGS) -c $< -o $@ -I $(INCLUDE)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-
-run: $(NAME) main.c
-	$(CC) $(CCFLAGS) main.c $(NAME) -I $(INCLUDE)
-	./a.out
-
-compile:
-	${CC} ${FLAGS} *.c -o a.out
-	./a.out ${param1} ${param2} ${param3}
-	rm -rf *.out

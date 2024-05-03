@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 14:52:03 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/29 21:13:21 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:49:29 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ char	*ft_itoa(int n)
 	if (!p)
 		return (NULL);
 	if (size != decplaces)
-	{
 		p[0] = '-';
-	}
 	ft_fillarray(p, n_long, size);
 	return (p);
 }

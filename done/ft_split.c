@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/29 16:23:36 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:03:19 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ static char	**ft_fillarray_c(char	**p, char const *s, char c)
 		else
 			s++;
 	}
-	p[i] = 0;
 	return (p);
 }
 
@@ -87,7 +86,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**p;
 
-	p = (char **)malloc(sizeof(char *) * (ft_count_str(s, c) + 1));
+	p = (char **)ft_calloc(sizeof(char *), (ft_count_str(s, c) + 1));
 	if (!p)
 		return (NULL);
 	return (ft_fillarray_c(p, s, c));

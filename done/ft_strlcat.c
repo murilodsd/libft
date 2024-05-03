@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 16:59:00 by murilodsd         #+#    #+#             */
-/*   Updated: 2024/04/29 18:21:35 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:14:45 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (j + size);
 	return (i + j);
 }
-/* #include <stdio.h>
+/* cd 42	#include <stdio.h>
 #include <string.h>
 int	main(void)
 {

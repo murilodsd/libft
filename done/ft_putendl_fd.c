@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:25:21 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/18 13:08:13 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:21:43 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	ft_putchar_fd('\n', fd);
 }
 /* #include <stdio.h>
 #include <stdlib.h>

@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 17:39:07 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/05/01 14:28:57 by mde-souz         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:12:36 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	if (d < s)
 	{
 		while (n--)
-		{
 			*d++ = *s++;
-		}
 	}
 	else if (d > s)
 	{
 		while (n--)
-		{
 			d[n] = s[n];
-		}
 	}
 	return (dest);
 }
