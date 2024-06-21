@@ -3,39 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-souz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 18:48:17 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/04 12:04:49 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/22 18:26:58 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/29 18:38:46 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
-{
-	int	check_signal;
-	int	num;
+/* The  atoi() function converts the initial portion of the string pointed
+to by nptr to int. */
 
-	num = 0;
-	check_signal = 1; 
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-	{
-		str++;
-	}
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			check_signal = check_signal * (-1);
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = (num * 10 + *str - '0');
-		str++;
-	}
-	return (check_signal * num);
-}
-/*#include <stdio.h>
-int	main()
+#include "libft.h"
+
+int	ft_isspace(char c)
 {
-	printf("%d",ft_atoi("\n\t -+-+-34234asd"));
-}*/
+	return ((c >= 9 && c <= 13) || c == ' ');
+}
+
+int	ft_atoi(const char *nptr)
+{
+	long	n;
+	long	signal;
+
+	signal = 1;
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (*nptr == '+')
+		nptr++;
+	else if (*nptr == '-')
+	{
+		nptr++;
+		signal = -1;
+	}
+	n = 0;
+	while (ft_isdigit(*nptr))
+	{
+		n = n * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (n * signal);
+}
+/* #include <stdio.h>
+int	main(void)
+{
+	printf("%d\n",ft_atoi("5"));
+	printf("%d\n",ft_atoi("0"));
+	printf("%d\n",ft_atoi(""));
+	printf("%d\n",ft_atoi("22a"));
+	printf("%d\n",ft_atoi("a22a"));
+	printf("%d\n",ft_atoi("    -22a"));
+	printf("%d\n",ft_atoi("+22a"));
+	printf("%d\n",ft_atoi("2147483647"));
+	printf("%d\n",ft_atoi("-2147483648"));
+} */

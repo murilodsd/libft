@@ -5,45 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 20:23:06 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/10 20:12:40 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/22 16:11:28 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/04/30 09:30:09 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
+char	*ft_strdup(const char *s)
 {
-	int	length;
-
-	length = 0;
-	while (str[length])
-	{
-		length++;
-	}
-	return (length);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*copy;
 	int		i;
+	char	*p;
 
-	copy = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!copy)
-		return (0);
+	p = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!p)
+		return (NULL);
 	i = 0;
-	while (src[i])
+	while (s[i])
 	{
-		copy[i] = src[i];
+		p[i] = s[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	p[i] = '\0';
+	return (p);
 }
 /* #include <stdio.h>
-int	main()
-{
-	char str[] = "Copia isso aqui";
-	printf("Array duplicado: %s",ft_strdup(str));
+int	main(void)
+{	
+	char s1[] = "teste";
+	printf("%s",ft_strdup(s1));
 } */

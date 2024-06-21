@@ -5,114 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/09 17:24:36 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/11 18:02:11 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/23 20:05:14 by mde-souz          #+#    #+#             */
+/*   Updated: 2024/05/02 16:03:19 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+/* Allocates (with malloc(3)) and returns an array
+of strings obtained by splitting ’s’ using the
+character ’c’ as a delimiter. The array must end
+with a NULL pointer.
+The array of new strings resulting from the split.
+NULL if the allocation fails.*/
 
-int	is_charset(char c, char *charset)
+#include "libft.h"
+
+static int	ft_count_str(char const *s, char c)
 {
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	count_words(char *str, char *charset)
-{
-	int	i;
 	int	count;
 
 	count = 0;
-	i = 0;
-	while (str[i])
+	while (*s)
 	{
-		while (str[i] != '\0' && is_charset(str[i], charset) == 1)
-		{
-			i++;
-		}
-		if (str[i] != '\0')
+		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
 			count++;
-		while (str[i] != '\0' && is_charset(str[i], charset) == 0)
-		{
-			i++;
-		}
+		s++;
 	}
 	return (count);
 }
 
-int	lword(char *str, char *charset)
+static size_t	ft_strlen_c(char const *s, char c)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
-	while (is_charset(str[i], charset) == 0 && str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
 }
 
-void	fill_array(char *array, char *str, char *charset)
+static void	ft_free_allocated_mem(char **p, int i)
 {
-	int	i;
-
-	i = 0;
-	while (is_charset(str[i], charset) == 0 && str[i] != '\0')
+	while (i >= 0)
 	{
-		array[i] = str[i];
-		i++;
+		free(p[i]);
+		p[i--] = NULL;
 	}
-	array[i] = '\0';
+	free(p);
+	p = NULL;
 }
 
-char	**ft_split(char *str, char *charset)
+static char	**ft_fillarray_c(char	**p, char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	**mtx;
+	int	i;
+	int	j;
 
-	mtx = (char **)malloc(sizeof(char *) 
-			* (count_words(str, charset) + 1));
-	if (!mtx)
-		return (0);
 	i = 0;
-	j = 0;
-	while (str[i])
+	while (*s)
 	{
-		while (str[i] != '\0' && is_charset(str[i], charset) == 1)
-			i++;
-		if (str[i] != '\0')
+		if (*s != c)
 		{
-			mtx[j] = (char *)malloc(sizeof(char) * lword(str + i, charset) + 1);
-			fill_array(mtx[j], str + i, charset);
-			j++;
-		}
-		while (str[i] != '\0' && is_charset(str[i], charset) == 0)
+			p[i] = (char *)malloc(sizeof(char) * (ft_strlen_c(s, c)) + 1);
+			if (!p[i])
+			{
+				ft_free_allocated_mem(p, i - 1);
+				return (NULL);
+			}
+			j = 0;
+			while (*s && *s != c)
+				p[i][j++] = *s++;
+			p[i][j] = '\0';
 			i++;
+		}
+		else
+			s++;
 	}
-	mtx[j] = 0;
-	return (mtx);
+	return (p);
 }
-/* int main ()
+
+char	**ft_split(char const *s, char c)
 {
-  char **mtx;
-  char *str = "string1+string2+-String3--String4--";
-  char *cs = "+-";
-  int i = 0;
-  mtx = ft_split(str, cs);
-  while (mtx[i] != 0)
-  {
-  printf("%s\n", mtx[i]);
-  i++;
-  }
+	char	**p;
+
+	p = (char **)ft_calloc(sizeof(char *), (ft_count_str(s, c) + 1));
+	if (!p)
+		return (NULL);
+	return (ft_fillarray_c(p, s, c));
+}
+/* #include <stdio.h>
+int	main(void)
+{	
+	int	words = 4;
+	char 	**p;
+	int	i;
+	p = ft_split("__string1_string2_string3___string4_",'_');
+	i = 0;
+	while (i < words)
+	{
+		printf("%s",*(p + i));
+		free(*(p + i++));
+	}
+	free((p));
 } */

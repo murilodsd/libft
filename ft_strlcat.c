@@ -5,57 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 12:06:08 by mde-souz          #+#    #+#             */
-/*   Updated: 2023/09/02 16:46:18 by mde-souz         ###   ########.fr       */
+/*   Created: 2024/04/21 16:59:00 by murilodsd         #+#    #+#             */
+/*   Updated: 2024/05/02 20:14:45 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Concatena duas strings
-//Colocamos um tamanho maximo para a uniao das duas
-//Retornamos qual seria o tamanho das duas inteiras juntas
-//Se size menor q o tamanho de dest nada eh feito  e retornamos size + s_src
+/** The strlcat() function appends the NUL-terminated string src
+ * to the end of dst.
+ * It will append at most size - strlen(dst) - 1 bytes,
+ * NUL-termi‐nating the result.
+ * @param src and dst must be NUL-terminated.
+ * @return if size > dest src + dest else src
+*/
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	length;
+	size_t	i;
+	size_t	j;
 
-	length = 0;
-	while (*str)
-	{
-		str++;
-		length++;
-	}
-	return (length);
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	s_dest;
-	unsigned int	s_src;
-
-	s_dest = ft_strlen(dest);
-	s_src = ft_strlen(src);
-	i = s_dest;
-	j = 0;
-	while (src[j] && i + 1 < size)
-	{
-		dest[i] = src[j];
+	i = 0;
+	while (dst[i])
 		i++;
+	j = 0;
+	while (i + j + 1 < size && src[j])
+	{
+		dst[i + j] = src[j];
 		j++;
 	}
-	dest[i] = '\0';
-	if (size < s_dest)
-		return (size + s_src);
-	return (s_dest + s_src);
+	dst[i + j] = '\0';
+	while (src[j])
+		j++;
+	if (size <= i)
+		return (j + size);
+	return (i + j);
 }
-/*#include <stdio.h>
-int main () {
-   char src[20] = "This is too long";
-   char dest[10] = "That";
-   unsigned int length;
-   length = ft_strlcat(dest, src, 30);
-   printf("string : |%s|/nTamanho da string: %d", dest, length);
-   return(0);
-}*/
+/* cd 42	#include <stdio.h>
+#include <string.h>
+int	main(void)
+{
+	char *s1 = strdup("abc");
+	char s2[] = "bbbbb";
+	char *s3 = strdup("abc");
+	char s4[] = "bbbbb";
+	printf("%ld ", strlcat(s1, s2, 15));
+	printf("%s\n", s1);
+	printf("%ld ", ft_strlcat(s3, s4, 15));
+	printf("%s\n", s3);
+	return 0;
+} */
