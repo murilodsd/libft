@@ -6,7 +6,7 @@
 /*   By: mde-souz <mde-souz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:33:23 by mde-souz          #+#    #+#             */
-/*   Updated: 2024/04/22 19:31:18 by mde-souz         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:42:41 by mde-souz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ be allocated:
 
            malloc(nmemb * size);*/
 #include "libft.h"
+#include <stdint.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 
 {
 	void	*p;
 
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
+		return (NULL);
 	p = malloc(nmemb * size);
 	if (!p)
 		return (NULL);
